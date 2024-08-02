@@ -17,7 +17,7 @@ def scrap_page(soup_obj):
         job_description = ul_2.select('li')[0].text.replace('Job Description:', '').replace('... More Details',
                                                                                             '').strip()
         skills = ul_2.select('li')[1].text.replace('KeySkills:', '').strip()
-        date = listing.div.div.div.select('span')[-1].text.strip()
+        date = listing.find('span', class_='sim-posted').text.strip()
 
         with open('vue_listings.csv', 'a+', newline='') as csv_file:
             writer.writerow(
